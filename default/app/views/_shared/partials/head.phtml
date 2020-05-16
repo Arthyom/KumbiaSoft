@@ -15,20 +15,14 @@
 <?= Tag::css('../assets/vendor/@fortawesome/fontawesome-free/css/all.min') ?>
 <?= Html::includeCss() ?>
 
-{% if page.pluginsCss %}
-{% for style in page.pluginsCss %}
-<link rel="stylesheet" href="assets/vendor/{{style}}">
-{% endfor %}
-{% endif %}
-<!-- END PLUGINS STYLES -->
 
-<!-- BEGIN THEME STYLES -->
 
 <?= Tag::css('../assets/stylesheets/theme.min') ?>
 <?= Tag::css('../assets/stylesheets/theme-dark.min') ?>
 <?= Tag::css('../assets/stylesheets/custom') ?>
 <?= Html::includeCss() ?>
 
+<!--
 <script>
   var skin = localStorage.getItem('skin') || 'default';
   var isCompact = JSON.parse(localStorage.getItem('hasCompactMenu'));
@@ -42,16 +36,9 @@
   if (isCompact == true) document.querySelector('html').classList.add('preparing-compact-menu');
 </script>
 
-<!-- END THEME STYLES -->
+!-- END THEME STYLES -->
 
 
 
 
 
-<?php 
-$dir = 'assets/stylesheets/';
-foreach( new DirectoryIterator($dir) as $fileI ) : ?>
-  <link rel="stylesheet" 
-  href="assets/stylesheets/<?php echo basename($fileI->getFilename())?>">
-
-<?php endforeach ?>
