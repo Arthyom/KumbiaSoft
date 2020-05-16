@@ -1,22 +1,28 @@
-{% assign actives = page.active | split: "." %}
+<!-- {% assign actives = page.active | split: "." %} -->
 <!-- child menu -->
 <ul class="menu">
-  {% for menuItem in levelMenu.childs %}
-  {% if menuItem.id == actives[1] %}
-  <li class="menu-item has-active{% if menuItem.childs %} has-child{% endif %}">
-  {% else %}
-  <li class="menu-item{% if menuItem.childs %} has-child{% endif %}">
-  {% endif %}
-    <a href="{{menuItem.link}}" class="menu-link">
-      {{menuItem.text}}
-      {% if menuItem.indicator %}
-      <span class="{{menuItem.indicatorClasses}}">{{menuItem.indicator}}</span>
-      {% endif %}
+  <?php foreach ($childs as $menuItem) : ?>
+
+  <!-- {% if menuItem.id == actives[1] %} -->
+  <?php if ($menuItem["id"]=="clients") : ?>
+    <li class="menu-item has-active<?php if (isset($menuItem["childs"])) : ?> has-child<?php endif ?>">
+  <?php else : ?>
+    <li class="menu-item<?php if (isset($menuItem["childs"])) : ?> has-child<?php endif ?>">
+  <?php endif ?>
+    <a href="<?= $menuItem["link"] ?>" class="menu-link">
+     
+      <?= $menuItem["text"] ?>
+      <?php if (isset($menuItem["indicator"])) : ?>
+      <span class="<?= $menuItem["indicatorClasses"] ?>"> <?= $menuItem["indicator"] ?></span>
+      <?php endif ?>
     </a>
-    {% if menuItem.childs %}
-    {% include snippets/aside/child-item.html %}
-    {% endif %}
+    
+
+     <?php 
+      if (isset($menuItem["childs"])) 
+        View::partial('snippets/aside/child-item', false, array('childs' => $menuItem["childs"]));
+     ?>
   </li>
-  {% endfor %}
+  <?php endforeach ?>
 </ul>
 <!-- /child menu -->
