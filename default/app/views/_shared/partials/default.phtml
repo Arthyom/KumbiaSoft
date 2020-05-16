@@ -25,14 +25,14 @@
 
        <!-- .app-header 
       {% include header-nosearch.html %}-->
-      <?php View::partial('header') ?> 
+      <?php View::partial('header') ?>
 
       <!-- /.app-header -->
 
       <!-- .app-aside 
       {% include aside.html %}
       /.app-aside -->
-      <?php View::partial('aside') ?>
+      <?php View::partial('aside', '', array('data'=> $data)) ?>
 
       <!-- .app-main -->
       <main class="app-main">

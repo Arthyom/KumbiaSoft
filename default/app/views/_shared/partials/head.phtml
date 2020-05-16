@@ -11,8 +11,10 @@
 <!-- End GOOGLE FONT -->
  
 <!-- BEGIN PLUGINS STYLES -->
-<link rel="stylesheet" href="assets/vendor/open-iconic/font/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+<?= Tag::css('../assets/vendor/open-iconic/font/css/open-iconic-bootstrap.min') ?>
+<?= Tag::css('../assets/vendor/@fortawesome/fontawesome-free/css/all.min') ?>
+<?= Html::includeCss() ?>
+
 {% if page.pluginsCss %}
 {% for style in page.pluginsCss %}
 <link rel="stylesheet" href="assets/vendor/{{style}}">
@@ -21,9 +23,11 @@
 <!-- END PLUGINS STYLES -->
 
 <!-- BEGIN THEME STYLES -->
-<link rel="stylesheet" href="assets/stylesheets/theme.min.css" data-skin="default">
-<link rel="stylesheet" href="assets/stylesheets/theme-dark.min.css" data-skin="dark">
-<link rel="stylesheet" href="assets/stylesheets/custom.css">
+
+<?= Tag::css('../assets/stylesheets/theme.min') ?>
+<?= Tag::css('../assets/stylesheets/theme-dark.min') ?>
+<?= Tag::css('../assets/stylesheets/custom') ?>
+<?= Html::includeCss() ?>
 
 <script>
   var skin = localStorage.getItem('skin') || 'default';

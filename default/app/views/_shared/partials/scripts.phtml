@@ -1,13 +1,17 @@
 <!-- BEGIN BASE JS -->
-<script src="assets/vendor/jquery/jquery.min.js"></script>
-<script src="assets/vendor/popper.js/umd/popper.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!-- END BASE JS -->
+<?php Tag::js('../assets/vendor/jquery/jquery.min') ?>
+<?php Tag::js('../assets/vendor/popper.js/umd/popper.min') ?>
+<?php Tag::js('../assets/vendor/bootstrap/js/bootstrap.min') ?>
+
 
 <!-- BEGIN PLUGINS JS -->
-<script src="assets/vendor/pace-progress/pace.min.js"></script>
-<script src="assets/vendor/stacked-menu/js/stacked-menu.min.js"></script>
-<script src="assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<?php Tag::js('../assets/vendor/pace-progress/pace.min') ?>
+<?php Tag::js('../assets/vendor/stacked-menu/js/stacked-menu.min') ?>
+<?php Tag::js('../assets/vendor/perfect-scrollbar/perfect-scrollbar.min') ?>
+<?php Tag::js('../assets/javascript/theme.min') ?>
+
+
+
 {% if page.pluginsJs %}
 {% for js in page.pluginsJs %}
 <script src="assets/vendor/{{js}}"></script>
@@ -15,9 +19,6 @@
 {% endif %}
 <!-- END PLUGINS JS -->
 
-<!-- BEGIN THEME JS -->
-<script src="assets/javascript/theme.min.js"></script>
-<!-- END THEME JS -->
 
 
 
