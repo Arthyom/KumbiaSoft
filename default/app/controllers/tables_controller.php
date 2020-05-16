@@ -8,7 +8,7 @@ class TablesController extends AppController
 
     }
 
-    public function basic()
+    public function table_basic()
     {
         //View::template("layouts/default");
     }
