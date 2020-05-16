@@ -1,59 +1,51 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+    <!-- Required meta tags --> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- End Required meta tags --
-
-    {% include head.html %}-->
+    <!-- End Required meta tags -->
 
     <?php View::partial('head') ?>
 
   </head>
 
-  {% if page.hasScrollSpy == true %}
+  <!-- {% if page.hasScrollSpy == true %} -->
+  <?php if (false) : ?>
   <body data-spy="scroll" data-target="#nav-content" data-offset="76">
-  {% else %}
+  <?php else : ?>
   <body>
-  {% endif %}
+  <?php endif ?>
     <!-- .app -->
     <div class="app">
       <!--[if lt IE 10]>
       <div class="page-message" role="alert">You are using an <strong>outdated</strong> browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</div>
       <![endif]-->
 
-       <!-- .app-header 
-      {% include header-nosearch.html %}-->
+      <!-- .app-header -->
       <?php View::partial('header') ?>
-
       <!-- /.app-header -->
 
-      <!-- .app-aside 
-      {% include aside.html %}
-      /.app-aside -->
+      <!-- .app-aside -->
       <?php View::partial('aside') ?>
+     
+      <!-- /.app-aside -->
 
       <!-- .app-main -->
       <main class="app-main">
         <!-- .wrapper -->
         <div class="wrapper">
-        <?php View::content() ?>
+          <?php View::content() ?>
         </div>
 
-        <!--
-        
-        {% include footer.html %}<-->
         <?php View::partial('footer') ?>
         <!-- /.wrapper -->
       </main>
       <!-- /.app-main -->
     </div>
-        <!-- /.app --
-    {% include scripts.html %} -->
+    <!-- /.app -->
 
     <?php View::partial('scripts') ?>
-
 
   </body>
 </html>
