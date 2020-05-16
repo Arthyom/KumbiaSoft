@@ -1,9 +1,10 @@
 <!-- thead -->
-{% if include.context %}
+<!--{% if include.context %}-->
+<?php if (false) : ?>
 <thead class="thead-{{include.context}}">
-{% else %}
+<?php else : ?>
 <thead>
-{% endif %}
+<?php endif ?>
   <tr>
     <th colspan="2" style="min-width:320px">
       <div class="thead-dd dropdown">
@@ -35,7 +36,23 @@
 <!-- /thead -->
 <!-- tbody -->
 <tbody>
-  {% for product in site.data.products %}
+ 
+
+  <?php 
+          $_data =file_get_contents("json/products.json");
+          $json = json_decode($_data, true);
+
+          foreach ($json["products"] as $key => $value) {
+            //echo $value["id"];
+            
+          }
+          ?>
+  <?php $_data =file_get_contents("json/products.json");
+        $json = json_decode($_data, true); ?>
+
+  <?php foreach ($json["products"] as $product) : ?> 
+    <h1>hi</h1>
+  <?php endforeach ?>
   {% if forloop.index >= offset %}
   {% if forloop.index <= max %}
   <!-- tr -->
