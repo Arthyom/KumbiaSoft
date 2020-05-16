@@ -39,15 +39,17 @@
       <nav id="stacked-menu" class="stacked-menu">
         <!-- .menu -->
         <ul class="menu">
-          {% for levelMenu in site.data.aside-menu %}
-            {% if levelMenu.type == 'header' %}
-            {% include snippets/aside/header-menu.html %}
-            {% endif %}
+        <?php 
+          $_data =file_get_contents("json/aside-menu.json");
+          $json = json_decode($_data, true);
 
-            {% if levelMenu.type == 'link' %}
-            {% include snippets/aside/level-menu.html %}
-            {% endif %}
-          {% endfor %}
+          foreach ($json["aside-menu"] as $key => $value) {
+             if($value["type"]== 'header')
+               View::partial('snippets/aside/header-menu', false, array('levelMenu' => $value));
+             if($value["type"]== 'link')
+               View::partial('snippets/aside/level-menu', false, array('levelMenu' => $value));
+          }
+          ?>
         </ul>
         <!-- /.menu -->
       </nav>

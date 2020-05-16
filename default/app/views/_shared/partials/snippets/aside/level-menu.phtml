@@ -1,23 +1,34 @@
-{% assign actives = page.active | split: "." %}
+<!-- {% assign actives = page.active | split: "." %} -->
 <!-- .menu-item -->
-{% if levelMenu.id == actives[0] %}
-<li class="menu-item has-active{% if levelMenu.isSlim %} menu-item-slim{% endif %}{% if levelMenu.childs %} has-child{% endif %}">
-{% else %}
-<li class="menu-item{% if levelMenu.isSlim %} menu-item-slim{% endif %}{% if levelMenu.childs %} has-child{% endif %}">
-{% endif %}
-  <a href="{{levelMenu.link}}" class="menu-link">
-    {% if levelMenu.icon %}
-    <span class="menu-icon {{levelMenu.icon}}"></span>
-    {% endif %}
-    {% if levelMenu.text %}
-    <span class="menu-text">{{levelMenu.text}}</span>
-    {% endif %}
-    {% if levelMenu.indicator %}
-    <span class="{{levelMenu.indicatorClasses}}">{{levelMenu.indicator}}</span>
-    {% endif %}
+
+
+<!-- {% if levelMenu.id == actives[0] %} --> 
+<?php if ($levelMenu["id"]=="dashboard") : ?>
+<li class="menu-item has-active<?php if (isset($levelMenu["isSlim"])) : ?> menu-item-slim<?php endif ?><?php if (isset($levelMenu["childs"])) : ?> has-child<?php endif ?>">
+<?php else : ?>
+<li class="menu-item<?php if (isset($levelMenu["isSlim"])) : ?> menu-item-slim<?php endif ?><?php if (isset($levelMenu["childs"])) : ?> has-child<?php endif ?>">
+<?php endif ?>
+
+  <a href="<?= $levelMenu["link"] ?>" class="menu-link">
+   
+    <?php if (isset($levelMenu["icon"])) : ?>
+    <span class="menu-icon <?= $levelMenu["icon"] ?>"></span>
+    <?php endif ?>
+
+    <?php if (isset($levelMenu["text"])) : ?>
+    <span class="menu-text"><?= $levelMenu["text"] ?></span>
+    <?php endif ?>
+
+    <?php if (isset($levelMenu["indicator"])) : ?>    
+    <span class="<?= $levelMenu["indicatorClasses"] ?>">><?= $levelMenu["indicator"] ?></span>
+    <?php endif ?>
   </a>
-  {% if levelMenu.childs %}
-  {% include snippets/aside/menu-item.html %}
-  {% endif %}
+
+  <?php 
+    if (isset($levelMenu["childs"]))
+       View::partial('snippets/aside/menu-item', false, array('childs' => $levelMenu["childs"]));
+  ?>
+  
+
 </li>
 <!-- /.menu-item -->

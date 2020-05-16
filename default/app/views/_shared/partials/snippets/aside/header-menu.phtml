@@ -1,11 +1,14 @@
 <!-- .menu-header -->
 <li class="menu-header">
-  {% if levelMenu.button %}
-  <button type="button" class="btn" data-toggle="tooltip" title="{{ levelMenu.buttonTitle }}" data-container="body"><span class="{{ levelMenu.button }}"></span></button>
-  {% endif %}
-  {% if levelMenu.indicator %}
-  <span class="{{ levelMenu.indicatorClasses }}">{{ levelMenu.indicator }}</span>
-  {% endif %}
-  {{ levelMenu.text }}
+ 
+  <?php if (isset($levelMenu["button"])) : ?>
+  <button type="button" class="btn" data-toggle="tooltip" title="<?=$levelMenu["buttonTitle"]?>" data-container="body"> <span class="<?=$levelMenu["button"]?>"></span></button>
+  <?php endif ?>
+
+  <?php if (isset($levelMenu["indicator"])) : ?>
+    <span class="<?= $levelMenu["indicatorClasses"] ?>">><?= $levelMenu["indicator"] ?></span>
+  <?php endif ?>
+
+  <?= $levelMenu["text"] ?>
 </li>
 <!-- /.menu-header -->
