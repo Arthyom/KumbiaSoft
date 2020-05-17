@@ -19,6 +19,15 @@ abstract class AppController extends Controller
 
     final protected function initialize()
     {
+        $controlador = $this->controller_name;
+     
+        if( $controlador != 'login'){
+            if( Auth::is_valid() )
+                return true;
+        
+            Redirect::to('login');
+            return false;
+        }
 
     }
 

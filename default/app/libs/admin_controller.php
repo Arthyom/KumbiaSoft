@@ -20,9 +20,38 @@ abstract class AdminController extends Controller
 
     final protected function initialize()
     {
-        //Código de auth y permisos
-        //Será libre, pero añadiremos uno por defecto en breve
-        //Posiblemente se cree una clase abstracta con lo que debe tener por defecto
+
+        if( Auth::is_valid() ){
+
+            $acl = new MyAcl('roles');
+            $modulo = $this->module_name;
+            $controlador = $this->controller_name;
+            $accion = $this->action_name;
+            $grupo_id = Auth::get('grupos_id');
+            $rol = (new grupos)->find($grupo_id)->nombre;
+    
+            if( $acl->check($rol, $modulo, $controlador, $accion) ){
+                Flash::info("todo ok we");
+                return true;            
+            }
+            else{
+                Flash::info("terror");
+                Redirect::to('/');
+                return false;    
+            }
+            return true;
+            
+        }
+        
+        
+        Redirect::to('login');
+        return false;
+
+    }
+
+    public function FunctionName()
+    {
+      
     }
 
     final protected function finalize()
@@ -31,3 +60,4 @@ abstract class AdminController extends Controller
     }
 
 }
+ 
