@@ -28,14 +28,14 @@ abstract class AdminController extends Controller
             $controlador = $this->controller_name;
             $accion = $this->action_name;
             $grupo_id = Auth::get('grupos_id');
-            $rol = (new grupos)->find($grupo_id)->nombre;
+            $rol = (new grupos)->find($grupo_id)->rol;
     
             if( $acl->check($rol, $modulo, $controlador, $accion) ){
-                Flash::info("todo ok we");
+                Flash::info("Correcto");
                 return true;            
             }
             else{
-                Flash::info("terror");
+                Flash::info("No tienes privilegios suficientes");
                 Redirect::to('/');
                 return false;    
             }
