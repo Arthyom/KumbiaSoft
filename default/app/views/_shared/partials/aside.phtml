@@ -49,7 +49,7 @@
           //var_dump($ad);
           foreach ($_data as $index => $row) {
             //$row = get_object_vars($_data[$key]);
-           if($row->parent_id==0){
+           if($row->parent==0){
             if($row->type== 'header')
               View::partial('snippets/aside/header-menu', false, array('levelMenu' => $row));
             if($row->type== 'link')

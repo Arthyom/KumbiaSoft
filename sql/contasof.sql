@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `menus`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `menus` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(5) NOT NULL DEFAULT '0',
+  `parent` int(5) NOT NULL DEFAULT '0',
   `position` int(5) NOT NULL DEFAULT '0',
   `item` varchar(100) NOT NULL,
   `type` enum('header','link') NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `menus` (
   `button` varchar(60) NOT NULL,
   `button_title` varchar(60) NOT NULL,
   `is_slim` bit(1) NOT NULL DEFAULT b'0',
-  `grupo_usuarios_id` int(5) NOT NULL DEFAULT '0',
+  `grupo_usuarios` int(5) NOT NULL DEFAULT '0',
   `date_at` date NOT NULL,
   `status` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`id`)
@@ -78,4 +78,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-18 10:33:54
+-- Dump completed on 2020-05-18 11:07:52
