@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 14-05-2020 a las 20:24:11
+-- Tiempo de generación: 18-05-2020 a las 13:50:49
 -- Versión del servidor: 5.7.29-0ubuntu0.18.04.1
 -- Versión de PHP: 7.2.24-0ubuntu0.18.04.4
 
@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 DROP DATABASE IF EXISTS contasof;
-CREATE DATABASE IF NOT EXISTS contasof;
+CREATE DATABASE IF EXISTS contasof;
 USE DATABASE contasof;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,51 +26,30 @@ USE DATABASE contasof;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `menus`
+-- Estructura de tabla para la tabla `grupos`
 --
 
-CREATE TABLE `menus` (
+CREATE TABLE `grupos` (
   `id` int(11) NOT NULL,
-  `text` varchar(50) NOT NULL,
-  `icon` varchar(100) DEFAULT NULL,
-  `link` varchar(100) DEFAULT 'link',
-  `type` varchar(20) NOT NULL
+  `rol` varchar(50) NOT NULL,
+  `nivel` tinyint(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `menus`
+-- Volcado de datos para la tabla `grupos`
 --
 
-INSERT INTO `menus` (`id`, `text`, `icon`, `link`, `type`) VALUES
-(1, 'item 1', NULL, NULL, ''),
-(2, 'item 2', NULL, NULL, ''),
-(3, 'item 3', NULL, NULL, ''),
-(4, 'item 4', NULL, NULL, '');
+INSERT INTO `grupos` (`id`, `rol`, `nivel`) VALUES
+(3, 'dios', 0),
+(4, 'dragon', 1),
+(6, 'ogro', 3),
+(10, 'tigre', 3);
+
+-- --------------------------------------------------------
 
 --
--- Índices para tablas volcadas
+-- Estructura de tabla para la tabla `usuarios`
 --
-
---
--- Indices de la tabla `menus`
---
-ALTER TABLE `menus`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `menus`
---
-ALTER TABLE `menus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
@@ -95,6 +74,12 @@ INSERT INTO `usuarios` (`id`, `user`, `pass`, `grupos_id`, `puesto`) VALUES
 --
 
 --
+-- Indices de la tabla `grupos`
+--
+ALTER TABLE `grupos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -105,6 +90,11 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `grupos`
+--
+ALTER TABLE `grupos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
@@ -119,3 +109,7 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuario_pertenece_grupo` FOREIGN KEY (`grupos_id`) REFERENCES `grupos` (`id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
