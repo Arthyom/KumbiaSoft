@@ -10,6 +10,9 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+DROP DATABASE IF EXISTS contasof;
+CREATE DATABASE IF NOT EXISTS contasof;
+USE DATABASE contasof;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -66,3 +69,53 @@ ALTER TABLE `menus`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `user` varchar(50) NOT NULL,
+  `pass` varchar(50) NOT NULL,
+  `grupos_id` int(11) NOT NULL,
+  `puesto` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `user`, `pass`, `grupos_id`, `puesto`) VALUES
+(1, 'juvencio', '12345', 3, 'Jefe de proyectos'),
+(3, 'Alfredo', '12345', 4, 'Desarrollador Senior'),
+(5, 'Bernardo', '12345', 6, 'Desarrollador Junior'),
+(7, 'Juan Carlos Aviles', '12345', 10, 'Oficinista casual');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `usuario_pertenece_grupo` (`grupos_id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuario_pertenece_grupo` FOREIGN KEY (`grupos_id`) REFERENCES `grupos` (`id`);
