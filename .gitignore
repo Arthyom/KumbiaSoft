@@ -1,6 +1,7 @@
 vendor
 default/app/temp
 default/public/temp
+looper-v1.4.2/*
 
 # Mac filesystem dust
 .DS_Store
