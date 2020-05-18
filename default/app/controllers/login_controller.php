@@ -19,7 +19,7 @@
                 }
                 else{
                     Flash::error("Falló");
-                    Redirect::to('/error');
+                    Redirect::to('login');
                 } 
             }
             else{
@@ -32,5 +32,11 @@
 
            
             
+        }
+
+        public function logout()
+        {
+            Auth::destroy_identity();
+            Redirect::to('login');
         }
     }
