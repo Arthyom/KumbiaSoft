@@ -40,13 +40,13 @@ var miDataTables = /*#__PURE__*/function () {
           { 
             extend:'copyHtml5', 
             text:'Copiar',
-            title:  document.getElementById('miTitle').value
+            title: ""// document.getElementById('miTitle').value
           },{
             extend: 'print',
             //autoPrint: false,
             //messageBottom: null,
             text: 'Imprimir',
-            title:  document.getElementById('miTitle').value,
+            title: ""//document.getElementById('miTitle').value,
             //messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
             
         }],
