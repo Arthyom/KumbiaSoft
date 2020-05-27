@@ -1,15 +1,42 @@
+<!-- .page -->
+<div class="page">
+  <!-- .page-inner -->
+  <div class="page-inner">
+    
+    <h1>Bienvenido Index</h1>
+    <h3> 
+    <?php if(isset($_SESSION["miBaseDatos"])): ?>
+        <?php
 
-<div class="m-5 text-white">
-<h1>Bienvenido Index</h1>
+        function testfun()
+        {
+            //echo "Antes ".$_SESSION["miBaseDatos"]."<br>";
+            if($_SESSION["miBaseDatos"]=="development") $_SESSION["miBaseDatos"]="development2";
+            else if($_SESSION["miBaseDatos"]=="development2") $_SESSION["miBaseDatos"]="tortu";
+            else $_SESSION["miBaseDatos"]="development";
+            echo "Estamos con la base: ".$_SESSION["miBaseDatos"]."<br>";
+        }
 
-<p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-    Dicta reprehenderit dolor exercitationem mollitia repellat debitis ratione. 
-    Ut id, reprehenderit tempora deserunt minus quidem, consequuntur error molestias magni, f
-    uga similique quos?
+        if(array_key_exists('test',$_POST)){
+            testfun();
+        }
 
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Facilis sunt magni sed, officia minima deleniti dicta obcaecati dolore sapiente corrupti 
-    animi similique repellat aspernatur quidem vel provident quasi saepe. Quasi.
-</p>
+    ?>
+    <?php else :?>
+        No hay Base de Datos
+    <?php endif ?>
+    </h3>
+    
+
+    
+    <form method="post">
+        <input type="submit" name="test" id="test" value="Cambiar de base" /><br/>
+    </form>
+
+    
+
+      
+  </div>
+  <!-- /.page-inner -->
 </div>
+<!-- /.page -->
