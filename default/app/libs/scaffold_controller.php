@@ -9,7 +9,7 @@
 abstract class ScaffoldController extends AdminController
 {
     /** @var string Carpeta en views/_shared/scaffolds/ */
-    public $scaffold = 'kumbia';
+    public $scaffold = 'uy';
     /** @var string Nombre del modelo en CamelCase */
     public $model = '';
 
@@ -19,9 +19,18 @@ abstract class ScaffoldController extends AdminController
      * @param int $page  Página a mostrar
      */
 
-    public function json($page=1)
+    public function buscarpor( $campo,  $coinicidencia)
     {
+     
+        $this->cb =  Input::hasPost('campo');
+        $this->c = Input::post('campo');
         
+        $this->data = (new $this->model)->find_all_by($campo, $coinicidencia);  
+    }
+
+    public function json($page = 1)
+    {
+
         View::template(NULL);
         View::response('json');
         $this->data = (new $this->model)->paginate("page: $page", 'order: id desc');

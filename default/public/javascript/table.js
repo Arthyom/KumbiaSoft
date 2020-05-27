@@ -15,6 +15,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 var miDataTables = /*#__PURE__*/function () { 
   function miDataTables() {
+    
     _classCallCheck(this, miDataTables); 
 
     this.init();
@@ -33,6 +34,7 @@ var miDataTables = /*#__PURE__*/function () {
   }, {
     key: "table",
     value: function table() {
+ 
       return $('#miTableb').DataTable({
         responsive: true,
         dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>\n        <'table-responsive'tr>\n        <'row align-items-center'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 d-flex justify-content-end'p>>",
