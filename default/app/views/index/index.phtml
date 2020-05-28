@@ -4,36 +4,8 @@
   <div class="page-inner">
     
     <h1>Bienvenido Index</h1>
-    <h3> 
-    <?php if(isset($_SESSION["miBaseDatos"])): ?>
-        <?php
 
-        function testfun()
-        {
-            //echo "Antes ".$_SESSION["miBaseDatos"]."<br>";
-            if($_SESSION["miBaseDatos"]=="development") $_SESSION["miBaseDatos"]="development2";
-            else if($_SESSION["miBaseDatos"]=="development2") $_SESSION["miBaseDatos"]="tortu";
-            else $_SESSION["miBaseDatos"]="development";
-            echo "Estamos con la base: ".$_SESSION["miBaseDatos"]."<br>";
-        }
 
-        if(array_key_exists('test',$_POST)){
-            testfun();
-        }
-
-    ?>
-    <?php else :?>
-        No hay Base de Datos
-    <?php endif ?>
-    </h3>
-    
-
-    
-    <form method="post">
-        <input type="submit" name="test" id="test" value="Cambiar de base" /><br/>
-    </form>
-
-    
 
       
   </div>
