@@ -1,0 +1,64 @@
+<?php foreach ($data as $key => $item) : ?>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Tipo</th>
+            <th>Nombre</th>
+            <th>Encargado</th>
+            <!--  <th>Concepto</th> -->
+            <th>Direccion</th>
+            <th>Municipio</th>
+            <th>Estado</th>
+            <th>CP</th>
+            <th>Telefono</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr>
+            <td><?= h($item->Tipo) ?></td>
+            <td><?= h($item->Nombre) ?></td>
+            <td><?= h($item->Encargado) ?></td>
+            <td><?= h($item->Direccion) ?></td>
+            <td><?= h($item->Municipio) ?></td>
+            <td><?= h($item->Estado) ?></td>
+            <td><?= h($item->CP) ?></td>
+            <td><?= h($item->Telefono) ?></td>
+        </tr>
+
+</table>
+
+<?php $polizas = (new polizas)->find("IdSucursal LIKE $item->id"); ?>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tipo</th>
+            <th>Fecha</th>
+            <th>Beneficiario</th>
+            <th>Concepto</th>
+            <th>Elaboro</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($polizas as $key => $val) : ?>
+
+        <tr>
+            <td> <?= h($key+1) ?></td>
+            <td> <?= h($val->Tipo) ?></td>
+            <td> <?= h($val->Fecha) ?> </td>
+            <td> <?= h($val->Beneficiario) ?> </td>
+            <td> <?= h($val->Concepto) ?> </td>
+            <td> <?= h($val->Elaboro) ?> </td>
+        </tr>
+
+        <?php endforeach ?>
+    </tbody>
+
+</table>
+
+<br>
+<?php endforeach ?>

@@ -9,7 +9,7 @@
 abstract class ScaffoldController extends AdminController
 {
     /** @var string Carpeta en views/_shared/scaffolds/ */
-    public $scaffold = 'uy';
+    public $scaffold = 'kumbia';
     /** @var string Nombre del modelo en CamelCase */
     public $model = '';
 
@@ -18,6 +18,19 @@ abstract class ScaffoldController extends AdminController
      * 
      * @param int $page  Página a mostrar
      */
+
+     public function pdf($alcance='externo')
+     {
+
+        View::template('pdf');
+        $this->data = (new $this->model)->find('order: id desc');
+
+        switch ($alcance) {
+            case 'interno':
+                View::select('interno');
+            break;
+        }
+     }
 
     public function buscarpor( $campo,  $coinicidencia)
     {

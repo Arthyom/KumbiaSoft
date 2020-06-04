@@ -1,0 +1,66 @@
+<?php foreach ($data as $key => $item) : ?>
+<table>
+    <thead class="table">
+        <tr>
+            <th>IdPoliza</th>
+            <th>Tipo</th>
+            <th>Fecha</th>
+            <th>Beneficiario</th>
+            <th>Elaboro</th>
+            <th>Aplicacion</th>
+            <th>Fuente</th>
+            <th>Monto</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><?= h($item->id) ?></td>
+
+            <td><?= h($item->Tipo) ?></td>
+
+            <td><?= h($item->Fecha) ?></td>
+            <td><?= h($item->Beneficiario) ?></td>
+            <td><?= h($item->Elaboro) ?></td>
+            <td><?= h($item->Aplicacion) ?></td>
+            <td><?= h($item->Fuente) ?></td>
+            <td><?= h($item->Monto) ?></td>
+
+        </tr>
+    </tbody>
+</table>
+
+
+<?php $detallesXpoliza = (new detallepolizas)->find("IdPoliza LIKE $item->id"); ?>
+<table >
+    <thead class="">
+        <tr>
+            <th>#</th>
+            <th>Cuenta</th>
+            <th>Nombre de la cuenta</th>
+            <th>Cargo</th>
+            <th>Abono</th>
+            <th>Concepto</th>
+            <th>IVA</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($detallesXpoliza as $key => $val) : ?>
+        <?php $cuenta = (new catalogodecuentas)->find("IdCuenta = $val->IdCuenta"); ?>
+        <?php $cuenta = $cuenta[0]; ?>
+        <tr>
+            <td> <?= h($key+1) ?></td>
+            <td> <?= h($val->IdCuenta) ?></td>
+            <td> <?= h($cuenta->Nombre) ?> </td>
+            <td> <?= h($val->Cargo) ?> </td>
+            <td> <?= h($val->Abono) ?> </td>
+            <td> <?= h($val->Concepto) ?> </td>
+            <td> <?= h($val->IVA) ?> </td>
+        </tr>
+
+        <?php endforeach ?>
+    </tbody>
+</table>
+
+
+<br>
+<?php endforeach ?>

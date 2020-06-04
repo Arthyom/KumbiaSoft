@@ -1,0 +1,42 @@
+
+<table>
+    <thead class="table thead-dark">
+        <tr>
+            <th>Tipo</th>
+            <th>Fecha</th>
+            <th>Beneficiario</th>
+            <th>Elaboro</th>
+            <th>Aplicacion</th>
+            <th>Fuente</th>
+            <th>Monto</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <?php if( count($data) > 0  ) :?>
+
+        <?php foreach ($data as $key => $item) : ?>
+        <tr>
+            <td><?= h($item->Tipo) ?></td>
+
+            <td><?= h($item->Fecha) ?></td>
+            <td><?= h($item->Beneficiario) ?></td>
+            <td><?= h($item->Elaboro) ?></td>
+            <td><?= h($item->Aplicacion) ?></td>
+            <td><?= h($item->Fuente) ?></td>
+            <td><?= h($item->Monto) ?></td>
+
+
+            <?php endforeach ?>
+
+            <?php else: ?>
+        <tr>
+            <td>No hay datos </td>
+        </tr>
+
+        <?php endif ?>
+
+
+    </tbody>
+</table>
