@@ -1,0 +1,35 @@
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Tipo</th>
+            <th>Nombre</th>
+            <th>Encargado</th>
+            <!--  <th>Concepto</th> -->
+            <th>Direccion</th>
+            <th>Municipio</th>
+            <th>Estado</th>
+            <th>CP</th>
+            <th>Telefono</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <?php if( count($data) > 0  ) :?>
+
+<?php foreach ($data as $key => $item) : ?>
+        <tr>
+            <td><?= h($item->Tipo) ?></td>
+            <td><?= h($item->Nombre) ?></td>
+            <td><?= h($item->Encargado) ?></td>
+            <td><?= h($item->Direccion) ?></td>
+            <td><?= h($item->Municipio) ?></td>
+            <td><?= h($item->Estado) ?></td>
+            <td><?= h($item->CP) ?></td>
+            <td><?= h($item->Telefono) ?></td>
+        </tr>
+        <?php endforeach ?>
+        <?php else :?>
+        <tr><th><h1>No hay datos</h1></th></tr>
+        <?php endif ?>
+    </tbody>
+</table>

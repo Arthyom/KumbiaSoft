@@ -11,9 +11,7 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-DROP DATABASE IF EXISTS contasof;
-CREATE DATABASE IF NOT EXISTS contasof;
-USE contasof;
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -66,13 +64,12 @@ CREATE TABLE `usuarios` (
 ALTER TABLE `grupos`
   ADD PRIMARY KEY (`id`);
 
-----
+
 ALTER TABLE `grupos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
   
--- Indices de la tabla `usuarios`
---
+
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuario_pertenece_grupo` (`grupos_id`);

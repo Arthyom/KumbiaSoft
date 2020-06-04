@@ -1,0 +1,117 @@
+<?php $totalAbono = 0; $totalCargo = 0 ?>
+
+<div>
+<?= Html::img('sicap.png', 'img Sicap') ?>
+            
+</div>
+
+<div class="contenedorS">
+<p><?php echo $sucursalBuscada->Direccion . ', ' . $sucursalBuscada->Barrio ?></p>
+                <p><?php echo 'RFC: '. $polizaBuscada->RFC. ', Tel: ' .$sucursalBuscada->Telefono ?></p>
+                <p><?php echo $sucursalBuscada->Nombre?></p>
+</div>
+
+<br>
+<table class="noBorde">
+  
+    <tr>
+        <td class="margen">
+            <label>
+                <b>General: </b>
+            </label>
+
+            <label>
+                <b>Sucursal: </b> <?php echo $polizaBuscada->id . ' ' . $polizaBuscada->Nombre ?>
+            </label>
+
+            <label>
+                <b>Numero: </b> <?php echo $polizaBuscada->Numero ?>
+            </label>
+
+            <label>
+                <b>Tipo: </b> <?php echo $polizaBuscada->Tipo ?>
+            </label>
+
+            <label>
+                <b>Fecha: </b> <?php echo $polizaBuscada->Fecha ?>
+            </label>
+
+            <p>
+            <b>Concepto: </b> <?php echo $polizaBuscada->Concepto?>
+
+            </p>
+        </td>
+    </tr>
+
+</table>
+
+<br>
+
+
+
+            <div class="contenedor">
+                Recibe:
+            </div>
+
+
+
+            <div class="contenedor2">
+                Elaboro: <?php echo $polizaBuscada->Elaboro ?>
+            </div>
+   
+            <div class="contenedor3">
+                Autorizo:
+            </div>
+ 
+
+
+<br>
+
+
+<table class=".detalles">
+    <thead class="table">
+        <tr>
+            <th>Sucursal</th>
+            <th>Cuenta</th>
+            <th>Nombre</th>
+            <th>Concepto</th>
+            <th>Cargo</th>
+            <th>Abono</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+
+
+        <?php foreach ($detallePoliza as $key => $item) : ?>
+        <?php $catalogo = (new catalogodecuentas)->find_first("IdCuenta LIKE $item->IdCuenta") ?>
+        <?php $totalAbono += $item->Abono; $totalCargo += $item->Cargo ?>
+        <tr>
+            <td><?= h($sucursalBuscada->id) ?></td>
+            <td><?= h($catalogo->IdCuenta) ?></td>
+            <td><?= h($catalogo->Nombre) ?></td>
+            <td><?= h($polizaBuscada->Concepo) ?></td>
+            <td><?= h($item->Cargo) ?></td>
+            <td><?= h($item->Abono) ?></td>
+        </tr>
+
+
+            <?php endforeach ?>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Totales: </td>
+                <td><?php echo $totalCargo ?> </td>
+                <td><?php echo $totalAbono ?></td>
+            </tr>
+    </tbody>
+</table>
+
+<br>
+
+<div>
+    D1B65E44-DEA6-4705-8BEF-ACB932685443
+</div>
